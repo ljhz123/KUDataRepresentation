@@ -54,7 +54,7 @@ class Trainer_TS_TCC:
         """
 
         best_model = copy.deepcopy(self.model)
-        best_valid_loss = 1000000000
+        best_valid_loss = 10000000
 
         for epoch in range(1, self.config['num_epoch'] + 1):
             # training
@@ -171,7 +171,7 @@ class Trainer_TS_TCC:
 
         # compute loss
         lambda1 = 1
-        lambda2 = 0.7
+        lambda2 = 0.6
         nt_xent_criterion = NTXentLoss(self.device, self.config['batch_size'], 0.2, True)
         loss = (temp_cont_loss1 + temp_cont_loss2) * lambda1 + nt_xent_criterion(zis, zjs) * lambda2
         return loss

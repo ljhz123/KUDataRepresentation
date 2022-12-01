@@ -107,5 +107,5 @@ class Seq_Transformer(nn.Module):
         c_tokens = repeat(self.c_token, '() n d -> b n d', b=b)
         x = torch.cat((c_tokens, x), dim=1)
         x = self.transformer(x)
-        c_t = self.to_c_token(x[:, 0])
+        c_t = self.to_c_token(x[:, 0]) #first token
         return c_t
